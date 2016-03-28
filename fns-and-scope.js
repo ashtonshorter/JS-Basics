@@ -6,6 +6,20 @@ var name = 'Tyler';
 //If the argument you passed in is equal to 'Tyler', return true. If it's not, return false.
 
   //Code Here
+  function isTyler(name) {
+  	var isTyler = false;
+
+  	if(name == "Tyler") {
+  		isTyler = true;
+  	} else {
+  		isTyler = false;
+  	}
+
+  	return isTyler;
+  }
+
+console.log(isTyler("Tyler"));
+console.log(isTyler("nottyler"));
 
 //Next problem
 
@@ -15,7 +29,19 @@ var name = 'Tyler';
 
 
   //Code Here
+  function getName() {
+  	var name = "";
 
+  	function prompt() {
+  		console.log("Enter your name: ");
+  		name = readLine();
+  		return name;
+  	}
+
+  	return prompt();
+  }
+
+  console.log(getName());
 
 //Next Problem
 

@@ -12,11 +12,12 @@ var outer = function(){
 // Invoke outer saving the return value into another variable called 'inner'.
 
   //Code Here
+  var inner = outer();
 
 //Once you do that, invoke inner.
 
   //Code Here
-
+  console.log(inner());
 
 
 //Next problem
@@ -35,11 +36,13 @@ var callFriend = function(){
 //Do what you need to do in order to call your function and get 'Calling Jake at 435-215-9248' in your console.
 
   //Code Here
+  var number = "435-215-9248";
+  var result = callFriend();
 
-
+  console.log(result(number()));
 
 //Next Problem
-
+  
 
 
 /*
@@ -47,11 +50,17 @@ var callFriend = function(){
 */
 
   //Code Here
-  var count = makeCounter();
-  count(); // 1
-  count(); // 2
-  count(); // 3
-  count(); // 4
+  var i = 0;
+
+  var count = function makeCounter() {
+    i++;
+    return i;
+  }
+  
+  console.log(count()); // 1
+  console.log(count()); //2
+  console.log(count()); //3
+  console.log(count()); //4
 
 
 
@@ -68,7 +77,14 @@ function counterFactory(value) {
   return {
 
     // Code inc function
+    function inc() {
+      value++;
+    }
     // Code dec function
+    function dec() {
+      value--;
+    }
+  }
 
 }
 
@@ -88,15 +104,18 @@ counter.dec(); // 10
 
   function motivation(firstname, lastname){
 
-    var welcomeText = 'Your doing awesome keep it up    ';
+    var welcomeText = 'Your doing awesome keep it up';
 
     // code message function here
+    function message() {
+      return ("" + welcomeText + " " + firstname + " " + lastname);
+    }
 
     return message()
 
   }
 
-  motivation('Billy', 'Bob'); // 'Your doing awesome keep it up Billy Bob
+  console.log(motivation('Billy', 'Bob')); // 'Your doing awesome keep it up Billy Bob
 
 
 
@@ -111,7 +130,7 @@ counter.dec(); // 10
       location: 'Utah'
     };
 
-    var privateMethod = function(){
+    var privateMethod = function() {
       return welcomeText + firstname + '  ' + lastname;
     };
 
@@ -119,11 +138,14 @@ counter.dec(); // 10
 
     return {
       // Code here
+      function publicMethod() {
+        return privateMethod();
+      }
     };
 
   })();
 
-  module.publicMethod();
+  console.log(module.publicMethod());
 
 
 
@@ -141,7 +163,12 @@ counter.dec(); // 10
 
   // To make this code work you will need to create a new scope for every iteration.
 
-
+  for (var i = 0; i <= 5; i++) {
+    setTimeout();
+    setTimeout(function() {
+      console.log(i);
+    }, i * 1000);
+  }
 
 
 
@@ -162,4 +189,21 @@ counter.dec(); // 10
   *Hint: Don't let this fool you. Break down what's really happening here.
 */
 
+var funcArray = function(num) {
+    return funcArray[num];
+};
 
+function fillArray(arrayToFill) {
+  for(var i = 0; i < 6; i++) {
+    funcArray[i] = i;
+  }
+}
+
+fillArray();
+
+ console.log(funcArray[0]()); //0
+ console.log(funcArray[1]()); //1
+ console.log(funcArray[2]()); //2
+ console.log(funcArray[3]()); //3
+ console.log(funcArray[4]()); //4
+ console.log(funcArray[5]()); //5
